@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EVENT REGISTRATION</title>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let event = document.getElementById("event").value;
+
+            if (name == "") {
+                alert("Please enter your name");
+                return false;
+            }
+
+            if (!/^[A-Za-z ]+$/.test(name)) {
+                alert("Please enter a valid name");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Please enter your email");
+                return false;
+            }
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            if (!gender) {
+                alert("Please select your gender");
+                return false;
+            }
+
+            if (event == "") {
+                alert("Please select an event");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+<h2>EVENT REGISTRATION FORM</h2>
+
+<form onsubmit="return validateForm()">
+
+    Name:<br>
+    <input type="text" id="name" name="name">
+    <br><br>
+
+    Email:<br>
+    <input type="email" id="email" name="email">
+    <br><br>
+
+    Gender:<br>
+    <input type="radio" name="gender" value="Male"> MALE
+    <br><br>
+
+    <input type="radio" name="gender" value="Female"> FEMALE
+    <br><br>
+
+    Event:<br>
+    <select id="event" name="event">
+        <option value="">Select Event</option>
+        <option value="LUDO">LUDO</option>
+        <option value="CARROM">CARROM</option>
+        <option value="BGMI">BGMI</option>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="REGISTER">
+    <input type="reset" value="RESET">
+
+</form>
+
+</body>
+</html>
+
